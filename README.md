@@ -34,6 +34,13 @@ A stable, daily-driver OpenCore EFI for a 12th-gen Intel Hackintosh. Near-native
 - **Power management**: NVMeFix, CPUFriend; sleep/wake works with the power button and USB devices.
 - **Dual boot**: Windows 11 boots fine from the same OpenCore menu.
 
+## Tuning Highlights
+
+- **CPU spoof**: the 12th-gen i5-12400F is presented to macOS as a 10th-gen CPU (`Kernel` -> `Emulate` `Cpuid1Data`) for power management; Geekbench 6 scores around 2216 single-core / 8090 multi-core.
+- **GPU**: RX 570 VRAM clock raised to 1900 MHz (`ATY,MaxMClkKHz`) with a light undervolt via a custom PowerPlay table — performance close to an RX 580.
+- **Thermals**: idle around 42-45 C.
+- **Sleep/wake**: no power loss, no spurious midnight wake-ups.
+
 ## Key Configuration Notes
 
 - **SimpleBCM 1.2.0 must stay enabled.** macOS Sequoia removed `IO80211FamilyLegacy`; without SimpleBCM the Wi-Fi interface disappears entirely.
@@ -112,6 +119,13 @@ To protect privacy, the machine codes in `EFI/OC/Config.plist` in this repo are 
 - **USB 端口**：已为华硕 H610M-A 制作专属 `USBPorts.kext` 定制驱动，规避 15 端口限制。
 - **电源管理**：NVMeFix、CPUFriend；睡眠唤醒正常，支持电源键和 USB 设备唤醒。
 - **双系统**：Windows 11 可从同一 OpenCore 菜单正常启动。
+
+## 调校亮点
+
+- **CPU 伪装**：12 代 i5-12400F 向系统伪装成 10 代 CPU（`Kernel` -> `Emulate` 的 `Cpuid1Data`），用于电源管理；Geekbench 6 跑分单核约 2216、多核约 8090。
+- **显卡**：RX 570 显存频率提到 1900 MHz（`ATY,MaxMClkKHz`），配合轻度欠压的 PowerPlay 表，性能接近 RX 580。
+- **温度**：待机约 42-45°C。
+- **睡眠唤醒**：无掉电、无半夜异常唤醒。
 
 ## 关键配置说明
 
